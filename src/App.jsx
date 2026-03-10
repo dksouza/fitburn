@@ -239,7 +239,7 @@ function ModuleCard({ module, onOpen, delay, completed }) {
 
   return (
     <div
-      className="rounded-2xl p-6 cursor-pointer transition-all duration-300 border relative overflow-hidden group"
+      className="rounded-3xl p-7 cursor-pointer transition-all duration-300 border relative overflow-hidden group"
       style={{
         backgroundColor: 'var(--color-dark-card)',
         borderColor: completed
@@ -260,7 +260,7 @@ function ModuleCard({ module, onOpen, delay, completed }) {
         style={{ background: 'radial-gradient(circle at top right, rgba(255, 107, 0, 0.05), transparent 70%)' }} />
 
       <div className="relative z-10">
-        <div className="flex items-start gap-4 mb-5">
+        <div className="flex items-start gap-4 mb-6">
           <span className="text-3xl mt-0.5 transition-transform duration-300"
             style={{ transform: isHovered ? 'scale(1.15) rotate(-5deg)' : 'scale(1)' }}>
             {module.icon}
@@ -283,7 +283,7 @@ function ModuleCard({ module, onOpen, delay, completed }) {
           </div>
         </div>
 
-        <div className="flex items-center justify-between mt-4 pt-4" style={{ borderTop: '1px solid var(--color-dark-border)' }}>
+        <div className="flex items-center justify-between mt-5 pt-5" style={{ borderTop: '1px solid var(--color-dark-border)' }}>
           <span className="text-text-muted text-xs font-body">
             {module.tasks.length} tasks
           </span>
@@ -324,9 +324,9 @@ function ModulePanel({ module, checkedTasks, onToggleTask, onResetTasks, onClose
   return (
     <div className={`fixed inset-0 z-50 overflow-y-auto ${isClosing ? 'animate-slide-out' : 'animate-slide-in'}`}
       style={{ backgroundColor: 'var(--color-dark)' }}>
-      <div className="max-w-2xl mx-auto px-6 py-8 min-h-screen pb-24">
+      <div className="max-w-2xl mx-auto px-7 sm:px-10 py-10 min-h-screen pb-28">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-10">
           <button
             onClick={handleClose}
             className="flex items-center gap-2 text-text-secondary hover:text-white transition-colors duration-200 font-body text-sm cursor-pointer bg-transparent border-0 p-2 -ml-2 rounded-lg"
@@ -356,7 +356,7 @@ function ModulePanel({ module, checkedTasks, onToggleTask, onResetTasks, onClose
         </div>
 
         {/* Module header */}
-        <div className="mb-8 animate-fade-in">
+        <div className="mb-10 animate-fade-in">
           <div className="flex items-center gap-3 mb-3">
             <span className="text-4xl">{module.icon}</span>
             <h2 className="font-heading text-4xl sm:text-5xl tracking-wide">{module.title}</h2>
@@ -365,7 +365,7 @@ function ModulePanel({ module, checkedTasks, onToggleTask, onResetTasks, onClose
         </div>
 
         {/* Progress bar */}
-        <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+        <div className="mb-10 animate-fade-in" style={{ animationDelay: '0.1s' }}>
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-secondary text-sm font-body">Progress</span>
             <span className="text-sm font-body font-semibold" style={{ color: 'var(--color-fire-orange)' }}>
@@ -391,13 +391,13 @@ function ModulePanel({ module, checkedTasks, onToggleTask, onResetTasks, onClose
         </div>
 
         {/* Task list */}
-        <div className="space-y-3.5">
+        <div className="space-y-4">
           {module.tasks.map((task, index) => {
             const isChecked = !!moduleTasks[index]
             return (
               <label
                 key={index}
-                className="flex items-center gap-4 px-5 py-4 rounded-xl cursor-pointer transition-all duration-200 group"
+                className="flex items-center gap-5 px-6 py-5 rounded-2xl cursor-pointer transition-all duration-200 group"
                 style={{
                   backgroundColor: isChecked ? 'rgba(255, 107, 0, 0.06)' : 'var(--color-dark-card)',
                   border: `1px solid ${isChecked ? 'rgba(255, 107, 0, 0.2)' : 'var(--color-dark-border)'}`,
@@ -410,7 +410,7 @@ function ModulePanel({ module, checkedTasks, onToggleTask, onResetTasks, onClose
                   className="custom-checkbox"
                 />
                 <span
-                  className="font-body text-sm transition-all duration-200"
+                  className="font-body text-[15px] leading-relaxed transition-all duration-200"
                   style={{
                     textDecoration: isChecked ? 'line-through' : 'none',
                     color: isChecked ? 'var(--color-text-muted)' : 'var(--color-text-primary)',
@@ -433,7 +433,7 @@ function RecipeCard({ recipe, onOpen }) {
 
   return (
     <div
-      className="rounded-2xl p-6 cursor-pointer transition-all duration-300 border relative overflow-hidden group"
+      className="rounded-3xl p-7 cursor-pointer transition-all duration-300 border relative overflow-hidden group"
       style={{
         backgroundColor: 'var(--color-dark-card)',
         borderColor: isHovered ? 'var(--color-fire-amber)' : 'var(--color-dark-border)',
@@ -522,37 +522,39 @@ function Dashboard({ email, onOpenModule, onOpenRecipe, allTasks, onLogout }) {
   const [showBanner, setShowBanner] = useState(true)
 
   return (
-    <div className="min-h-screen px-6 sm:px-8 py-10 max-w-xl sm:max-w-2xl lg:max-w-4xl mx-auto pb-24">
+    <div className="min-h-screen px-7 sm:px-10 py-12 max-w-xl sm:max-w-2xl lg:max-w-4xl mx-auto pb-28">
 
       {/* Update announcement banner */}
-      {showBanner && (
-        <div
-          className="rounded-xl px-4 py-3 mb-6 flex items-center gap-3 animate-fade-in"
-          style={{
-            background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(255, 61, 0, 0.08))',
-            border: '1px solid rgba(255, 107, 0, 0.2)',
-          }}
-        >
-          <span className="text-lg flex-shrink-0">🚀</span>
-          <p className="text-sm font-body text-text-secondary flex-1">
-            <span className="text-white font-semibold">App updated!</span> More modern design and faster performance.
-          </p>
-          <button
-            onClick={() => setShowBanner(false)}
-            className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-lg text-text-muted hover:text-white cursor-pointer bg-transparent border-0 transition-colors duration-200"
-            onMouseEnter={(e) => e.target.style.background = 'rgba(255,255,255,0.06)'}
-            onMouseLeave={(e) => e.target.style.background = 'transparent'}
+      {
+        showBanner && (
+          <div
+            className="rounded-2xl px-5 py-4 mb-10 flex items-center gap-3 animate-fade-in"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(255, 61, 0, 0.08))',
+              border: '1px solid rgba(255, 107, 0, 0.2)',
+            }}
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      )}
+            <span className="text-lg flex-shrink-0">🚀</span>
+            <p className="text-sm font-body text-text-secondary flex-1">
+              <span className="text-white font-semibold">App updated!</span> More modern design and faster performance.
+            </p>
+            <button
+              onClick={() => setShowBanner(false)}
+              className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-lg text-text-muted hover:text-white cursor-pointer bg-transparent border-0 transition-colors duration-200"
+              onMouseEnter={(e) => e.target.style.background = 'rgba(255,255,255,0.06)'}
+              onMouseLeave={(e) => e.target.style.background = 'transparent'}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        )
+      }
 
       {/* Header */}
-      <header className="mb-12 animate-fade-in">
-        <div className="flex items-center justify-between mb-6">
+      <header className="mb-16 animate-fade-in">
+        <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center"
               style={{ background: 'linear-gradient(135deg, var(--color-fire-orange), var(--color-fire-red))' }}>
@@ -581,7 +583,7 @@ function Dashboard({ email, onOpenModule, onOpenRecipe, allTasks, onLogout }) {
           </button>
         </div>
 
-        <h2 className="font-heading text-3xl sm:text-4xl tracking-wide mb-2">
+        <h2 className="font-heading text-3xl sm:text-4xl tracking-wide mb-3">
           Welcome back! 🔥
         </h2>
         <p className="text-text-secondary font-body text-sm">
@@ -590,13 +592,13 @@ function Dashboard({ email, onOpenModule, onOpenRecipe, allTasks, onLogout }) {
       </header>
 
       {/* Module completion progress */}
-      <div className="rounded-2xl p-6 mb-10 border animate-fade-in"
+      <div className="rounded-3xl p-12 mb-14 border animate-fade-in"
         style={{
           backgroundColor: 'var(--color-dark-card)',
           borderColor: completedModules === MODULES.length ? 'rgba(0, 230, 118, 0.35)' : 'var(--color-dark-border)',
           animationDelay: '0.1s',
         }}>
-        <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center justify-between mb-7">
           <div>
             <h3 className="font-heading text-lg tracking-wide">Your Progress</h3>
             <p className="text-text-secondary text-sm font-body">
@@ -616,20 +618,20 @@ function Dashboard({ email, onOpenModule, onOpenRecipe, allTasks, onLogout }) {
         </div>
 
         {/* Module progress bars */}
-        <div className="flex gap-2.5">
+        <div className="flex gap-3.5">
           {MODULES.map((mod) => {
             const done = isModuleCompleted(mod.id, allTasks)
             return (
-              <div key={mod.id} className="flex-1 flex flex-col items-center gap-1.5">
+              <div key={mod.id} className="flex-1 flex flex-col items-center gap-2">
                 <div
-                  className="w-full h-2.5 rounded-full transition-all duration-500"
+                  className="w-full h-3 rounded-full transition-all duration-500"
                   style={{
                     background: done
                       ? 'linear-gradient(90deg, var(--color-fire-orange), var(--color-fire-red))'
                       : 'var(--color-dark-border)',
                   }}
                 />
-                <span className="text-[11px]" style={{ opacity: done ? 1 : 0.4 }}>
+                <span className="text-[13px]" style={{ opacity: done ? 1 : 0.4 }}>
                   {mod.icon}
                 </span>
               </div>
@@ -639,10 +641,10 @@ function Dashboard({ email, onOpenModule, onOpenRecipe, allTasks, onLogout }) {
       </div>
 
       {/* Recipes section */}
-      <div className="mb-10 animate-fade-in" style={{ animationDelay: '0.12s' }}>
-        <h3 className="font-heading text-2xl tracking-wide mb-1">Recipes</h3>
-        <p className="text-text-secondary text-sm font-body mb-5">Healthy meals to power your transformation</p>
-        <div className="grid grid-cols-1 gap-4">
+      <div className="mb-14 animate-fade-in" style={{ animationDelay: '0.12s' }}>
+        <h3 className="font-heading text-2xl tracking-wide mb-2">Recipes</h3>
+        <p className="text-text-secondary text-sm font-body mb-7">Healthy meals to power your transformation</p>
+        <div className="grid grid-cols-1 gap-5">
           {RECIPES.map((recipe) => (
             <RecipeCard key={recipe.id} recipe={recipe} onOpen={onOpenRecipe} />
           ))}
@@ -650,12 +652,12 @@ function Dashboard({ email, onOpenModule, onOpenRecipe, allTasks, onLogout }) {
       </div>
 
       {/* Module grid */}
-      <div className="mb-6 animate-fade-in" style={{ animationDelay: '0.18s' }}>
-        <h3 className="font-heading text-2xl tracking-wide mb-1">Your Modules</h3>
-        <p className="text-text-secondary text-sm font-body mb-5">Choose a module to start your session</p>
+      <div className="mb-10 animate-fade-in" style={{ animationDelay: '0.18s' }}>
+        <h3 className="font-heading text-2xl tracking-wide mb-2">Your Modules</h3>
+        <p className="text-text-secondary text-sm font-body mb-7">Choose a module to start your session</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 stagger-children">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 stagger-children">
         {MODULES.map((module, index) => (
           <ModuleCard
             key={module.id}
@@ -668,12 +670,12 @@ function Dashboard({ email, onOpenModule, onOpenRecipe, allTasks, onLogout }) {
       </div>
 
       {/* Footer */}
-      <footer className="mt-16 pb-8 text-center">
+      <footer className="mt-24 pb-12 text-center">
         <p className="text-text-muted text-xs font-body">
           FIT BURN — Your daily fire fuel 🔥
         </p>
       </footer>
-    </div>
+    </div >
   )
 }
 
