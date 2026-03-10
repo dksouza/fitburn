@@ -145,9 +145,9 @@ function LoginScreen({ onLogin }) {
         <div className="absolute bottom-1/3 right-1/4 w-3 h-3 rounded-full bg-fire-red opacity-20 animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
-      <div className="w-full max-w-md animate-fade-in relative z-10">
+      <div className="w-full max-w-sm sm:max-w-md animate-fade-in relative z-10">
         {/* Logo */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 animate-pulse-glow"
             style={{ background: 'linear-gradient(135deg, var(--color-fire-orange), var(--color-fire-red))' }}>
             <span className="text-4xl">🔥</span>
@@ -160,54 +160,58 @@ function LoginScreen({ onLogin }) {
             }}>
             FIT BURN
           </h1>
-          <p className="text-text-secondary mt-2 text-sm tracking-widest uppercase font-body">
+          <p className="text-text-secondary mt-3 text-sm tracking-widest uppercase font-body">
             Transform Your Body
           </p>
         </div>
 
         {/* Headline */}
-        <h2 className="font-heading text-3xl sm:text-4xl text-center mb-8 tracking-wide">
+        <h2 className="font-heading text-3xl sm:text-4xl text-center mb-10 tracking-wide">
           Start burning today.
         </h2>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="relative">
-            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-              <svg className="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => { setEmail(e.target.value); setError('') }}
-              placeholder="Enter your email"
-              className="w-full pl-12 pr-4 py-4 rounded-xl text-white placeholder-text-muted font-body text-base outline-none transition-all duration-300 border-2"
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div>
+            <div
+              className="flex items-center gap-3 rounded-2xl border-2 transition-all duration-300 overflow-hidden"
               style={{
                 backgroundColor: 'var(--color-dark-card)',
                 borderColor: error ? 'var(--color-fire-red)' : 'var(--color-dark-border)',
               }}
-              onFocus={(e) => e.target.style.borderColor = 'var(--color-fire-orange)'}
-              onBlur={(e) => e.target.style.borderColor = error ? 'var(--color-fire-red)' : 'var(--color-dark-border)'}
-            />
-          </div>
+            >
+              <div className="pl-5 flex-shrink-0">
+                <svg className="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => { setEmail(e.target.value); setError('') }}
+                placeholder="Enter your email"
+                className="flex-1 py-5 pr-5 text-white placeholder-text-muted font-body text-base outline-none bg-transparent border-0"
+                onFocus={(e) => e.target.closest('div[class*="border"]').style.borderColor = 'var(--color-fire-orange)'}
+                onBlur={(e) => e.target.closest('div[class*="border"]').style.borderColor = error ? 'var(--color-fire-red)' : 'var(--color-dark-border)'}
+              />
+            </div>
 
-          {error && (
-            <p className="text-fire-red text-sm font-body animate-fade-in flex items-center gap-2">
-              <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-              </svg>
-              {error}
-            </p>
-          )}
+            {error && (
+              <p className="text-fire-red text-sm font-body animate-fade-in flex items-center gap-2 mt-3 ml-1">
+                <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+                {error}
+              </p>
+            )}
+          </div>
 
           <button
             type="submit"
             onMouseDown={() => setIsPressed(true)}
             onMouseUp={() => setIsPressed(false)}
             onMouseLeave={() => setIsPressed(false)}
-            className="w-full py-4 rounded-xl font-heading text-xl tracking-widest text-white transition-all duration-200 cursor-pointer border-0"
+            className="w-full py-5 rounded-2xl font-heading text-xl tracking-widest text-white transition-all duration-200 cursor-pointer border-0"
             style={{
               background: 'linear-gradient(135deg, var(--color-fire-orange), var(--color-fire-red))',
               transform: isPressed ? 'scale(0.97)' : 'scale(1)',
@@ -221,7 +225,7 @@ function LoginScreen({ onLogin }) {
         </form>
 
         {/* Bottom text */}
-        <p className="text-text-muted text-xs text-center mt-8 font-body">
+        <p className="text-text-muted text-xs text-center mt-8 font-body tracking-wide">
           No password needed — just your email to get started
         </p>
       </div>
